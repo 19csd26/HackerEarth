@@ -17,8 +17,12 @@ Output Format
 
 Output a single integer, the number of favourite singers of Bob
 
-Note: Use 64 bit data typ
+Note: Use 64 bit data type
 
+Constraints
+-------------
+1<=N<=2*10^5
+1<=a[i]<=10^15
 
 */
 
