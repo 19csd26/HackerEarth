@@ -29,59 +29,46 @@ Constraints
 SOLUTION:
 ------------
 import java.util.*;
-
 class TestClass {
     public static void main(String args[]) throws Exception {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         long[] songs = new long[n];
-        
         for (int i = 0; i < n; i++) {
             songs[i] = sc.nextLong();
         }
-        
         long[] frequencies = countSingerFrequencies(songs);
         long maxFrequency = findMaxFrequency(frequencies);
         int favoriteSingersCount = countFavoriteSingers(frequencies, maxFrequency);
         
         System.out.println(favoriteSingersCount);
     }
-
     private static long[] countSingerFrequencies(long[] songs) {
         HashMap<Long, Long> frequencyMap = new HashMap<>();
-
         for (long singer : songs) {
             frequencyMap.put(singer, frequencyMap.getOrDefault(singer, 0L) + 1L);
         }
-
         long[] frequencies = new long[frequencyMap.size()];
         int index = 0;
         for (long frequency : frequencyMap.values()) {
             frequencies[index++] = frequency;
         }
-
         return frequencies;
     }
-
     private static long findMaxFrequency(long[] frequencies) {
         long maxFrequency = 0L;
-
         for (long frequency : frequencies) {
             maxFrequency = Math.max(maxFrequency, frequency);
         }
-
         return maxFrequency;
     }
-
     private static int countFavoriteSingers(long[] frequencies, long maxFrequency) {
         int count = 0;
-
         for (long frequency : frequencies) {
             if (frequency == maxFrequency) {
                 count++;
             }
         }
-
         return count;
     }
 }
